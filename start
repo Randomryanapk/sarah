@@ -1,59 +1,87 @@
 #!/bin/bash
+__version__="1.8"
 
-# Define color variables
-GREEN="\033[1;32m"
-WHITE="\033[1;37m"
-CYAN="\033[1;36m"
-RED="\033[1;31m"
+## DEFAULT HOST
+HOST='127.0.0.1'
+
+# Generate a random port number between 1024 and 65535
+PORT=$(shuf -i 1024-65535 -n 1)
+
+# Define colors
+GREEN="\033[32m"
+WHITE="\033[37m"
 RESET="\033[0m"
 
-# Print header
-header() {
-    echo -e "${CYAN}=============================="
-    echo -e "  INSTALL DEBIAN & RUN SARAH"
-    echo -e "==============================${RESET}"
+# Function to print banner in green
+green_echo() {
+    local str="$1"
+    echo -e "${GREEN}${str}${RESET}"
 }
 
-# Install Debian on Termux
-install_debian() {
-    echo -e "${GREEN}[${WHITE}-${GREEN}] Installing Debian in Termux...${RESET}"
-    mkdir -p ~/debian
-    cd ~/debian || exit
-    wget https://raw.githubusercontent.com/sp4rkie/debian-on-termux/master/debian_on_termux.sh
-    chmod +x debian_on_termux.sh
-    bash debian_on_termux.sh --install
-
-    # Ensure start-debian.sh is executable
-    chmod +x start-debian.sh
+# Define the banner function
+banner() {
+    green_echo "========================================"
+    green_echo "███████╗ █████╗ ██████╗  █████╗ ██╗  ██╗"
+    green_echo "██╔════╝██╔══██╗██╔══██╗██╔══██╗██║  ██║"
+    green_echo "███████╗███████║██████╔╝███████║███████║"
+    green_echo "╚════██║██╔══██║██╔══██╗██╔══██║██╔══██║"
+    green_echo "███████║██║  ██║██║  ██║██║  ██║██║  ██║"
+    green_echo "╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝"
+    green_echo "========================================"
+    green_echo "+++---PROJECT-SARAH-FOR-TERMUX---+++"
+    green_echo "========================================"
 }
 
-# Clone the repository and launch mip22.sh
-clone_and_run_sarah() {
-    echo -e "${GREEN}[${WHITE}-${GREEN}] Starting Debian environment and running sarah...${RESET}"
+## Directories
+BASE_DIR=$(pwd)
+WEBROOT_DIR="${BASE_DIR}/your_site"
 
-    # Ensure the start-debian.sh script is executable
-    if [[ -x "./start-debian.sh" ]]; then
-        ./start-debian.sh <<EOF
-        apt update && apt install git -y
-        cd ~
-        git clone https://github.com/randomryanapk/sarah.git
-        cd sarah
-        chmod 777 *
-        echo -e "${GREEN}[${WHITE}-${GREEN}] Running mip22.sh...${RESET}"
-        ./mip22.sh
-EOF
+# Function to set up the webroot directory
+setup_webroot() {
+    if [[ ! -d "${WEBROOT_DIR}" ]]; then
+        mkdir -p "${WEBROOT_DIR}"
+        echo -e "\n[+] Created webroot directory: ${WEBROOT_DIR}"
+    fi
+    echo -e "<h1>Welcome to Project Sarah</h1>" > "${WEBROOT_DIR}/index.html"
+}
+
+# Function to install dependencies, including Apache2
+install_dependencies() {
+    echo -e "\n[+] Installing required packages..."
+    if [[ -n "$(command -v apt)" ]]; then
+        pkg install apache2 php curl -y
     else
-        echo -e "${RED}[${WHITE}!${RED}] start-debian.sh not found or not executable!${RESET}"
+        echo -e "\n[!] Unsupported package manager. Please install Apache2, PHP, and Curl manually."
         exit 1
     fi
 }
 
-# Execute the complete flow
+# Function to configure Apache2
+configure_apache() {
+    echo -e "\n[+] Configuring Apache2..."
+    if [[ -d "/data/data/com.termux/files/usr/share/apache2/default-site/htdocs" ]]; then
+        rm -rf /data/data/com.termux/files/usr/share/apache2/default-site/htdocs/*
+        ln -s "${WEBROOT_DIR}" /data/data/com.termux/files/usr/share/apache2/default-site/htdocs
+        apachectl restart
+        echo -e "[+] Apache2 configured successfully."
+    else
+        echo -e "[!] Apache2 default directory not found."
+    fi
+}
+
+# Start the web server
+start_server() {
+    echo -e "\n[+] Starting PHP server at http://${HOST}:${PORT}/"
+    php -S "$HOST":"$PORT" -t "${WEBROOT_DIR}" &
+}
+
+# Main function
 main() {
-    { clear; header; }
-    echo -e "${GREEN}[${WHITE}-${GREEN}] Setting up Debian and Sarah...${RESET}"
-    install_debian
-    clone_and_run_sarah
+    { clear; banner; }
+    setup_webroot
+    install_dependencies
+    configure_apache
+    start_server
 }
 
 # Run the main function
