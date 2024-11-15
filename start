@@ -22,20 +22,30 @@ install_debian() {
     wget https://raw.githubusercontent.com/sp4rkie/debian-on-termux/master/debian_on_termux.sh
     chmod +x debian_on_termux.sh
     bash debian_on_termux.sh --install
+
+    # Ensure start-debian.sh is executable
+    chmod +x start-debian.sh
 }
 
 # Clone the repository and launch mip22.sh
 clone_and_run_sarah() {
     echo -e "${GREEN}[${WHITE}-${GREEN}] Starting Debian environment and running sarah...${RESET}"
-    ./start-debian.sh <<EOF
-    apt update && apt install git -y
-    cd ~
-    git clone https://github.com/randomryanapk/sarah.git
-    cd sarah
-    chmod 777 *
-    echo -e "${GREEN}[${WHITE}-${GREEN}] Running mip22.sh...${RESET}"
-    ./mip22.sh
+
+    # Ensure the start-debian.sh script is executable
+    if [[ -x "./start-debian.sh" ]]; then
+        ./start-debian.sh <<EOF
+        apt update && apt install git -y
+        cd ~
+        git clone https://github.com/randomryanapk/sarah.git
+        cd sarah
+        chmod 777 *
+        echo -e "${GREEN}[${WHITE}-${GREEN}] Running mip22.sh...${RESET}"
+        ./mip22.sh
 EOF
+    else
+        echo -e "${RED}[${WHITE}!${RED}] start-debian.sh not found or not executable!${RESET}"
+        exit 1
+    fi
 }
 
 # Execute the complete flow
